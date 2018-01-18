@@ -53,7 +53,7 @@ if [ $(uname) == Darwin ]; then
 else
     COMP_CC=gcc
     COMP_CXX=g++
-    export LDFLAGS="${LDFLAGS} -lkea -lproj -lpoppler -lxerces-c-3.2 -ldap -lpng16 -lpcre -liconv -lhdf5 -lgeos-3.6.2 -licui18n -licuuc -licudata -lcom_err -lhdf5_hl -lhdf5_cpp -lminizip -luriparser -lkmlbase -lkmldom -lkmlengine -ldapclient -lssl -lssh2 -lcrypto -lmfhdf -ldf -ljpeg -ltiff"
+    export LDFLAGS="${LDFLAGS} -lkea -lproj -lpoppler -lxerces-c-3.2 -ldap -lpng16 -lpcre -liconv -lhdf5 -lgeos-3.6.2 -licui18n -licuuc -licudata -lcom_err -lhdf5_hl -lhdf5_cpp -lminizip -luriparser -lkmlbase -lkmlconvenience -lkmldom -lkmlengine -ldapclient -lssl -lssh2 -lcrypto -lmfhdf -ldf -ljpeg -ltiff -lpq"
 fi
 
 export LDFLAGS="$LDFLAGS -L$PREFIX/lib"
