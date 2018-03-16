@@ -1,0 +1,58 @@
+From 36855ac8d6fceae20f843c12092f80fa91c206c4 Mon Sep 17 00:00:00 2001
+From: Max Smolens <max.smolens@kitware.com>
+Date: Wed, 14 Mar 2018 16:46:34 -0400
+Subject: [PATCH] Fix error reading TIFF input
+
+In PointCloud::TransformPointCloud, set the PDAL reader type explicitly
+when the input file is TIFF. This is necessary because the GDAL reader
+plugin doesn't specify any file extensions [1], and therefore the reader
+cannot be inferred based on the filename.
+
+This fixes errors like the following when running align3d:
+
+    Writing aligned LAS file.
+    Cannot determine reader for input file: /path/to/DATASET.tif
+
+[1] https://github.com/PDAL/PDAL/blob/58b586fb392085a0ea32dcdedc488f78d7ea2c00/io/GDALReader.cpp#L46-L49
+---
+ src/common/PointCloud.cpp | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/src/common/PointCloud.cpp b/src/common/PointCloud.cpp
+index a8c2df9..b568622 100644
+--- a/src/common/PointCloud.cpp
++++ b/src/common/PointCloud.cpp
+@@ -2,9 +2,7 @@
+ // Licensed under the MIT License. See LICENSE.txt in the project root for full license information.
+ 
+ #include "PointCloud.h"
+-#ifdef WIN32
+ #include <regex>
+-#endif
+ 
+ // Pipeline needs to read in point cloud file of any type, and read it in. ideally in meters
+ static std::string PDAL_PIPELINE_OPEN_ENGINE = R"({ "pipeline": [ ")";
+@@ -73,9 +71,18 @@ namespace pubgeo {
+ 		inputFileName = std::regex_replace(inputFileName, std::regex("\\\\"), "/"); // Replace single backslash with double
+ 		outputFileName = std::regex_replace(outputFileName, std::regex("\\\\"), "/"); // Replace single backslash with double
+ #endif
++        // Set reader type explicitly when input is TIFF
++        std::regex tiffRegex("^.*\\.tiff?$", std::regex_constants::icase);
++        bool tiffInput = std::regex_match(inputFileName, tiffRegex);
++
+         std::ostringstream pipeline;
+-        pipeline << "{\n\t\"pipeline\":[\n\t\t\"" << inputFileName
+-                 << "\",\n\t\t{\n\t\t\t\"type\":\"filters.transformation\",\n"
++        pipeline << "{\n\t\"pipeline\":[\n"
++                 << "\t\t{\n\t\t\t\"filename\":\"" << inputFileName << "\"";
++        if (tiffInput) {
++            pipeline << ",\n\t\t\t\"type\":\"readers.gdal\"\n";
++        }
++        pipeline << "\n\t\t},\n"
++                 << "\t\t{\n\t\t\t\"type\":\"filters.transformation\",\n"
+                  << "\t\t\t\"matrix\":\""
+                  << "1 0 0 " << translateX << " "
+                  << "0 1 0 " << translateY << " "
+-- 
+2.16.2
+
