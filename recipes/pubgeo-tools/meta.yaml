@@ -5,8 +5,10 @@ package:
   version: {{ version }}
 
 source:
-  git_rev: 5223661082f13073f4e0ba0245d777f7292b65c8
-  git_url: https://github.com/pubgeo/pubgeo.git
+  git_rev: 7980377ff68dc3f7a922a07a517cab2494aa6331
+  git_url: https://github.com/msmolens/pubgeo.git
+  patches:
+    - fix-error-reading-tiff-input.patch
 
 build:
   number: 0
