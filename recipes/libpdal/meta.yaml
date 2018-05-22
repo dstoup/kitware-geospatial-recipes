@@ -17,6 +17,7 @@ build:
 
 requirements:
   build:
+    - cmake
     - jsoncpp 1.8.3.*
     - libgdal 2.2.3.*
     - numpy >=1.5
