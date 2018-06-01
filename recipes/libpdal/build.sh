@@ -49,7 +49,7 @@ if [ $(uname) == Darwin ]; then
     export MACOSX_DEPLOYMENT_TARGET="10.9"
     export CXXFLAGS="${CXXFLAGS} -stdlib=libc++"
     export LDFLAGS="${LDFLAGS} -headerpad_max_install_names"
-    CMAKE_ARGS="-DCMAKE_BUILD_RPATH:PATH=${PREFIX}/lib -DGDAL_LIBRARY:PATH=$PREFIX/lib/libgdal.dylib"
+    CMAKE_ARGS="-DCMAKE_BUILD_RPATH:PATH=${PREFIX}/lib -DGDAL_LIBRARY:PATH=$PREFIX/lib/libgdal.dylib -DGDAL_INCLUDE_DIR:PATH=$PREFIX/include"
 else
     COMP_CC=gcc
     COMP_CXX=g++
