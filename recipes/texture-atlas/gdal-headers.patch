@@ -1,0 +1,64 @@
+diff --git a/Texture_Atlas/src/camera_rpc.cpp b/Texture_Atlas/src/camera_rpc.cpp
+index 71c0960..4ea3a38 100644
+--- a/Texture_Atlas/src/camera_rpc.cpp
++++ b/Texture_Atlas/src/camera_rpc.cpp
+@@ -2,7 +2,7 @@
+ #include "utils.h"
+ 
+ #include <iostream>
+-#include <gdal/gdal_priv.h>
++#include <gdal_priv.h>
+ 
+ // Constructor
+ Camera_RPC::Camera_RPC(const std::string& filename)
+diff --git a/Texture_Atlas/src/image_ooc.h b/Texture_Atlas/src/image_ooc.h
+index 0539b90..8ab8bed 100644
+--- a/Texture_Atlas/src/image_ooc.h
++++ b/Texture_Atlas/src/image_ooc.h
+@@ -1,7 +1,7 @@
+ #ifndef IMAGE_OOC_H
+ #define IMAGE_OOC_H
+ 
+-#include <gdal/gdal_priv.h>
++#include <gdal_priv.h>
+ #include <opencv2/opencv.hpp>
+ 
+ /**
+diff --git a/Texture_Atlas/src/image_satellite.cpp b/Texture_Atlas/src/image_satellite.cpp
+index 2995a85..5fe1b04 100644
+--- a/Texture_Atlas/src/image_satellite.cpp
++++ b/Texture_Atlas/src/image_satellite.cpp
+@@ -2,7 +2,7 @@
+ 
+ #include <iostream>
+ 
+-#include <gdal/gdal_priv.h>
++#include <gdal_priv.h>
+ 
+ #include <opencv2/opencv.hpp>
+ #include <opencv2/photo.hpp>
+diff --git a/Texture_Atlas/src/utils.cpp b/Texture_Atlas/src/utils.cpp
+index 5de53ae..23a7bc1 100644
+--- a/Texture_Atlas/src/utils.cpp
++++ b/Texture_Atlas/src/utils.cpp
+@@ -5,7 +5,6 @@
+ #include <memory>
+ #include <vector>
+ 
+-#include <gdal/gdal_priv.h>
+ #include <proj_api.h>
+ #include <vtkPolyData.h>
+ #include <vtkSmartPointer.h>
+diff --git a/Texture_Atlas/src/utils.h b/Texture_Atlas/src/utils.h
+index 3d8a24a..2659ec8 100644
+--- a/Texture_Atlas/src/utils.h
++++ b/Texture_Atlas/src/utils.h
+@@ -4,7 +4,7 @@
+ #include <vector>
+ 
+ #include <Eigen/Dense>
+-#include <gdal/gdal_priv.h>
++#include <gdal_priv.h>
+ #include <opencv2/opencv.hpp>
+ 
+ #include "uv_parameterization.h"
