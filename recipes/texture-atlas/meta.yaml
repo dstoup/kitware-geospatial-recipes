@@ -1,0 +1,23 @@
+package:
+  name: texture-atlas
+  version: {{ environ['GIT_DESCRIBE_TAG'] ~ "." ~ environ['GIT_DESCRIBE_NUMBER'] ~ "." ~ environ['GIT_DESCRIBE_HASH'] }}
+
+source:
+#  git_rev: {{ sha }}
+  git_branch: add-findproj4
+  git_url: git@gitlab.kitware.com:danlipsa/core3d-keu.git
+  patches:
+    - gdal-headers.patch
+
+requirements:
+  build:
+    - vtk
+    - eigen 3.3.3.*
+    - opencv 3.3.1.*
+    - libgdal 2.2.3.*
+  run:
+    - vtk
+    - eigen 3.3.3.*
+    - opencv 3.3.1.*
+    - libgdal 2.2.3.*
+
