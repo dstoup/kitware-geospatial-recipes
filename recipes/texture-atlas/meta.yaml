@@ -4,13 +4,15 @@ package:
 
 source:
 #  git_rev: {{ sha }}
-  git_branch: add-findproj4
-  git_url: git@gitlab.kitware.com:danlipsa/core3d-keu.git
+  git_branch: master
+  git_url: git@gitlab.kitware.com:core3d/core3d-keu.git
   patches:
     - gdal-headers.patch
 
 requirements:
   build:
+    - cmake
+    - ninja
     - vtk
     - eigen 3.3.3.*
     - opencv 3.3.1.*
@@ -21,3 +23,8 @@ requirements:
     - opencv 3.3.1.*
     - libgdal 2.2.3.*
 
+test:
+  commands:
+    - run_texture_mapping
+    - run_only_atlases_fusion
+    - run_only_obj_generation
