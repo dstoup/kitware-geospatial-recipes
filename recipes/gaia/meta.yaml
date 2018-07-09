@@ -23,7 +23,7 @@ requirements:
     - shapely
     - pillow
     - geopandas
-    - gdal 2.2.3
+    - gdal 2.2.*
     - pdal 1.6
     - celery >=3.1.20
     - psycopg2 >=2.6.1
