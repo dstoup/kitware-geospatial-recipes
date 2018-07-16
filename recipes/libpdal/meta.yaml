@@ -20,14 +20,14 @@ requirements:
     - cmake
     - jsoncpp 1.8.3.*
     - json-c 0.12.1.*
-    - libgdal 2.2.3.*
+    - libgdal 2.2.*
     - numpy >=1.5
     - vc 9  # [win and py27]
     - vc 14  # [win and (py35 or py36)]
   run:
     - jsoncpp 1.8.3.*
     - json-c 0.12.1.*
-    - libgdal 2.2.3.*
+    - libgdal 2.2.*
     - numpy >=1.5
     - sqlite 3.20.*
     - vc 9  # [win and py27]

@@ -3,8 +3,7 @@ package:
   version: {{ environ['GIT_DESCRIBE_TAG'] ~ "." ~ environ['GIT_DESCRIBE_NUMBER'] ~ "." ~ environ['GIT_DESCRIBE_HASH'] }}
 
 source:
-#  git_rev: {{ sha }}
-  git_branch: master
+  git_rev: 30e1a07ba536329c49558816537cc4c1204e56ec
   git_url: git@gitlab.kitware.com:core3d/core3d-keu.git
   patches:
     - gdal-headers.patch
@@ -16,12 +15,12 @@ requirements:
     - vtk v8.1.1.*    # vtk from kitware-geospatial
     - eigen 3.3.3.*
     - opencv 3.3.1.*
-    - libgdal 2.2.3.*
+    - libgdal 2.2.*
   run:
     - vtk v8.1.1.*    # vtk from kitware-geospatial
     - eigen 3.3.3.*
     - opencv 3.3.1.*
-    - libgdal 2.2.3.*
+    - libgdal 2.2.*
 
 test:
   commands:
